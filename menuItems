@@ -1,0 +1,38 @@
+import java.util.Scanner;
+import java.util.HashMap;
+
+class Main {
+  public static void main(String[] args) {
+    Scanner keyboard = new Scanner(System.in);
+    HashMap <String, Double> menu = new HashMap<>();
+    String lasagna = "lasagna";
+    String pasta = "pasta";
+    String meatballs = "meatballs";
+    String pizza = "pizza";
+    String garlicBread = "garlic bread";
+
+    double priceLasagna = 10.99;
+    double pricePasta = 9.99;
+    double priceMeatballs = 12.99;
+    double pricePizza = 10.99;
+    double priceGarlicBread = 4.99;
+
+    menu.put(lasagna, priceLasagna);
+    menu.put(pasta, pricePasta);
+    menu.put(meatballs, priceMeatballs);
+    menu.put(pizza, pricePizza);
+    menu.put(garlicBread, priceGarlicBread);
+
+    System.out.println("Hi welcome to Olive Garden, what are your name for the order? ");
+    String name = keyboard.nextLine();
+    System.out.println("Nice to meet you " + name + " what would you like to order? (enter \"quit\" to end order)");
+    String order = keyboard.nextLine();
+    double total = 0;
+    while(!order.equals("quit")){
+      total += menu.get(order); 
+      order = keyboard.nextLine();
+    } 
+
+    System.out.println("Total cost: $" + total + " Tip 10%: "+ (total*.10));
+  }
+}
