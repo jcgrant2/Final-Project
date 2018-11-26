@@ -1,10 +1,9 @@
-public class foodMenu {
+public class FoodMenu {
 
   String foodName;
   double price;
-  int quantity;
   
-  public OrderLine (int quantity, String foodName, double price){
+  public FoodMenu (int quantity, String foodName, double price){
 
     this.quantity = quantity;
     this.foodName = foodName;
