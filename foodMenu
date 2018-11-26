@@ -1,0 +1,5 @@
+public class foodMenu {
+  String foodName;
+  double price;
+  int quantity;
+  foodMenu() {
