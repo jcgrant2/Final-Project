@@ -1,11 +1,19 @@
 import java.util.Scanner;
 import java.util.HashMap;
+import java.io.*; // for reading into a file and writing out to a file
 
 class Main {
   public static void main(String[] args) {
     Scanner keyboard = new Scanner(System.in);
     HashMap <String, Double> menu = new HashMap<>();
-
+    File menu = new File("MenuList.txt");
+    Scanner scanner = new Scanner(menu); // placing object in instead of System.in
+    while (scanner.hasNextLine()) {
+      String foodName = scanner.nextLine();
+      scanner.nextLine();
+      double price = scanner.nextDouble();
+      menu.put(foodName, price);
+    } 
     System.out.println("Hi welcome to Olive Garden, what are your name for the order? ");
     String name = keyboard.nextLine();
     System.out.println("Nice to meet you " + name + " what would you like to order? (enter \"quit\" to end order)");
@@ -18,4 +26,6 @@ class Main {
 
     System.out.println("Total cost: $" + total + " Tip 10%: "+ (total*.10));
   }
+  
+  public static double subTotal(
 }
