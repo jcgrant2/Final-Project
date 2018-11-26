@@ -13,19 +13,27 @@ class Main {
       scanner.nextLine();
       double price = scanner.nextDouble();
       menu.put(foodName, price);
-    } 
-    System.out.println("Hi welcome to Olive Garden, what are your name for the order? ");
-    String name = keyboard.nextLine();
-    System.out.println("Nice to meet you " + name + " what would you like to order? (enter \"quit\" to end order)");
-    String order = keyboard.nextLine();
+    }
+    // remember to do error checks, if its not on the menu. i.e. -1
+    HashMap <String, FoodMenu> order = new HashMap<>();
+    System.out.println("Hi welcome to Olive Garden");
+    System.out.println("Enter \"quit\" to end order)");
     double total = 0;
-    while(!order.equals("quit")){
-      total += menu.get(order); 
+    System.out.println("Are you finished with your order? Yes or No? ");
+    String order = scanner.nextLine();
+    
+    while(!order.equals("No")){
+      System.out.println("What is your name for the order and what item(s) would you like? ");
+      String name = keyboard.nextLine();
+      String food = keyboard.nextLine();
+      System.out.println("How many of those items would you like?");
+      int quantity = keyboard.nextInt();
+      FoodMenu bill = new FoodMenu(quantity, food, menu.get(foodName)); 
+      total += menu.computeSubtotal();
+      System.out.println("Are you finished with your order");
       order = keyboard.nextLine();
     } 
 
     System.out.println("Total cost: $" + total + " Tip 10%: "+ (total*.10));
   }
-  
-  public static double subTotal(
 }
