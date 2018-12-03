@@ -1,5 +1,6 @@
 public class FoodMenu {
 
+  int quantity;
   String foodName;
   double price;
   
