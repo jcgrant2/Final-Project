@@ -7,6 +7,7 @@ class Main {
   
     Scanner keyboard = new Scanner(System.in);
     HashMap <String, Double> menu = new HashMap<>();
+    HashMap <String, ArrayList<FoodMenu>> subtotals = new HashMap<>();
     File menuList = new File("MenuList.txt");
     try{
       Scanner scanner = new Scanner(menuList); // placing object in instead of System.in
@@ -32,19 +33,56 @@ class Main {
          System.out.println("How many of those items would you like?");
          int quantity = keyboard.nextInt();
          FoodMenu bill = new FoodMenu(quantity, food, menu.get(food)); 
-         total += bill.computeSubtotal();
+         if(subtotals.contains(name)){
+            
+            ArrayList<FoodMenu> orderedItems = subtotals.get(name);
+            orderedItems.add(bill);
+            subtotal.put(name, orderedItems);
+         } else {
+         
+            ArrayList<FoodMenu> orderedItems = new ArrayList<FoodMenu>();
+            orderedItems.add(bill);
+            subtotals.add(name, orderedItems);
+         }
          System.out.println("Are you finished with your order? Yes or No?");
          keyboard.nextLine();
          answer = keyboard.nextLine();
        } 
    
        //Gives them the total for their combined order and gives the amount for tipping 10 percent
-       System.out.println("Total cost: $" + total + " Tip 10%: "+ (total*.10));
+       System.out.println("Are you paying together?");
+       answer = keyboard.nextLine();
        
+       if(answer.equalsIngoreCase("No")){
+       
+       } else {
+       
+       }
        
       }catch(FileNotFoundException e){
       
          System.out.println("Menu doesn't exist");
       };
   }   
-}     
+}
+
+public static void payTogether(HashMap<String, FoodMenu> totals){
+
+   try{
+   
+   }catch(FileNotFoundException e){
+   
+      System.out.print("Receipt doesn't exist");
+   };
+
+}
+
+public static void paySeparate(HashMap<String, FoodMenu> totals){
+
+   try{
+   
+   }catch(FileNotFoundException e){
+   
+      System.out.print("Receipt doesn't exist");
+   };
+}
